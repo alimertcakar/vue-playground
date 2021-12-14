@@ -7,17 +7,34 @@
 
 <body>
     <div id="app">
-        {{ message }}
+
+
+        <input v-model="message" />
+        <div v-if="message">You have a message</div>
+        <div v-else>You don't have a message</div>
+
+        <div :class="message ? 'selam' : ''"> Message: {{ message}}</div>
+
+
+        <div v-for="item in 10" :key="item">{{item}} patates</div>
+
     </div>
+    <style>
+        .selam {
+            border: 1px solid orange;
+        }
+    </style>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                message: 'Hello Vue!'
+                message: 'Hello Vue!', players: ["alimert", "cpu", "heyyo"]
             }
         })
     </script>
+
+
 </body>
 
 </html>
