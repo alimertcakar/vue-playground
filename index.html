@@ -7,31 +7,38 @@
 
 <body>
     <div id="app">
-
-
-        <input v-model="message" />
-        <div v-if="message">You have a message</div>
-        <div v-else>You don't have a message</div>
-
-        <div :class="message ? 'selam' : ''"> Message: {{ message}}</div>
-
-
-        <div v-for="item in 10" :key="item">{{item}} patates</div>
-
+        <input v-model="newComment" @keydown="addComment">
+        <div v-for="comment in comments">{{bestComments}}</div>
+        <button @click="reverse">reverse</button>
     </div>
     <style>
-        .selam {
-            border: 1px solid orange;
-        }
     </style>
 
     <script>
         var app = new Vue({
             el: '#app',
             data: {
-                message: 'Hello Vue!', players: ["alimert", "cpu", "heyyo"]
+                newComment: "",
+                comments: []
+            },
+            methods: {
+                addComment() {
+                    this.comments.push(this.newComment)
+                },
+                reverse() {
+                    this.comments.reverse();
+                }
+            },
+            computed: {
+                bestComments() {
+                    return this.comments.filter(comment => comment.includes("a"))
+                }
             }
         })
+
+
+
+
     </script>
 
 
