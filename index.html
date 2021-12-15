@@ -8,8 +8,6 @@
 <body>
     <div id="app">
         <input v-model="newComment" @keydown="addComment">
-        <div v-for="comment in comments">{{bestComments}}</div>
-        <button @click="reverse">reverse</button>
     </div>
     <style>
     </style>
@@ -32,6 +30,13 @@
             computed: {
                 bestComments() {
                     return this.comments.filter(comment => comment.includes("a"))
+                }
+            },
+            watch: {
+                newComment(next, prev) {
+                    if (next === "sifre") {
+                        this.newComment = "vay beee!"
+                    }
                 }
             }
         })
